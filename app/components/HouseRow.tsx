@@ -1,4 +1,7 @@
+import { useContext } from "react"
 import currencyFormatter from "../helpers/currencyFormatter"
+import { navigationContext } from "../page"
+import navValues from "../helpers/navValues"
 
 export type HouseRecord = {
   id:number,
@@ -11,12 +14,13 @@ export type HouseRecord = {
 
 export type HouseRowProps = {
   house:HouseRecord
-  selectHouse: (house:HouseRecord)=> void
 }
 
-const HouseRow = ({house,selectHouse}: HouseRowProps) => {
+const HouseRow = ({house}: HouseRowProps) => {
+  const {navigate} = useContext(navigationContext);
+
   return (
-    <tr onClick={() => selectHouse(house)}>
+    <tr onClick={() => navigate(navValues.house, house)}>
       <td>{house.address}</td>
       <td>{house.country}</td>
       {house.price && (

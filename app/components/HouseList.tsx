@@ -7,7 +7,7 @@ type HouseListProps = {
   selectHouse: (house:HouseRecord)=> void
 }
 
-const HouseList = ({selectHouse}:HouseListProps) => {
+const HouseList = () => {
   console.log('houselist comp rendered')
 
   const {houses,setHouses,loadingState} = useHouses();
@@ -47,7 +47,7 @@ const HouseList = ({selectHouse}:HouseListProps) => {
           {
             houses.map(h => 
               (
-                <HouseRow key={h.id} house={h} selectHouse={selectHouse} />
+                <HouseRow key={h.id} house={h} />
               ) 
             )
           }
